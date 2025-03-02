@@ -7,6 +7,7 @@ export default {
         generalsans: ['General Sans', 'sans-serif'],
       },
       colors: {
+        darkBg: "#0e0e10",
         black: {
           DEFAULT: '#000',
           100: '#010103',

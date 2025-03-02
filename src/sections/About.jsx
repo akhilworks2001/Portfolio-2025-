@@ -32,7 +32,7 @@ const About = () => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: myAbout.current,
-          start: "top 80%", // Start animation when element enters 80% of viewport
+          start: "top 70%", // Start animation when element enters 70% of viewport
         },
       });
     }
@@ -45,7 +45,7 @@ const About = () => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: techStack.current,
-          start: "top 80%",
+          start: "top 70%",
         },
       });
     }
@@ -58,7 +58,7 @@ const About = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: globeSec.current,
-            start: "top 80%", // Start animation when element enters 80% of viewport
+            start: "top 70%", // Start animation when element enters 70% of viewport
           },
         });
       }
@@ -71,7 +71,7 @@ const About = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: passionSec.current,
-            start: "top 80%", // Start animation when element enters 80% of viewport
+            start: "top 70%", // Start animation when element enters 70% of viewport
           },
         });
       }
@@ -84,7 +84,7 @@ const About = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: mailSec.current,
-            start: "top 80%", // Start animation when element enters 80% of viewport
+            start: "top 70%", // Start animation when element enters 70% of viewport
           },
         });
       }
