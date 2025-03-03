@@ -52,12 +52,8 @@ const Contact = () => {
 
           setTimeout(() => {
             hideAlert(false);
-            setForm({
-              name: '',
-              email: '',
-              message: '',
-            });
-          }, [3000]);
+            setForm({ name: '', email: '', message: '' });
+          }, 3000);
         },
         (error) => {
           setLoading(false);
@@ -77,9 +73,9 @@ const Contact = () => {
 
   const titleRef = useRef(null);
   const subTitleRef = useRef(null);
-  const inputTitleRef = useRef(null);
-  const inputRef = useRef(null);
-  const button = useRef(null);
+  const inputTitleRefs = useRef([]);
+  const inputRefs = useRef([]);
+  const buttonRef = useRef(null);
 
   useGSAP(() => {
     if (titleRef.current) {
@@ -107,9 +103,50 @@ const Contact = () => {
             start: "top 80%",
           },
         });
+      }
 
-        
+      if (inputTitleRefs.current.length > 0) {
+        inputTitleRefs.current.forEach((el, index) => {
+          if (el) { 
+            gsap.from(el, {
+              opacity: 0,
+              duration: 1,
+              scrollTrigger: {
+                trigger: el,
+                start: "top 80%",
+              },
+            });
+          }
+        });
+      }
 
+      if (inputRefs.current.length > 0) {
+        inputRefs.current.forEach((el, index) => {
+          if (el) { 
+            gsap.from(el, {
+              y: -50,
+              opacity: 0,
+              duration: 2,
+              scrollTrigger: {
+                trigger: el,
+                start: "top 80%",
+              },
+            });
+          }
+        });
+      }
+
+      if (buttonRef.current) {
+        gsap.from(buttonRef.current, {
+          opacity: 0,
+          y: -100,
+          duration: 2,
+          ease: "bounce.out",
+          scrollTrigger: {
+            trigger: buttonRef.current,
+            start: "top 80%",
+          },
+        });
       }
 
 
@@ -120,7 +157,7 @@ const Contact = () => {
   return (
     <section className="c-space my-20" id="contact">
       {alert.show && <Alert {...alert} />}
-      <div className="border border-black-300 bg-black-200 rounded-l pt-10 pb-10 flex items-center justify-center flex-col">
+      <div className="border border-black-300 bg-black-200 rounded-l pt-8 pb-8 flex items-center justify-center flex-col">
         <div className="contact-container bg-gray">
           <h3 ref={titleRef} className="head-text">Let's talk</h3>
           <p ref={subTitleRef} className="text-lg text-white-600 mt-3">
@@ -130,8 +167,9 @@ const Contact = () => {
 
           <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7 mb-12 ">
             <label className="space-y-3">
-              <span  className="field-label">Full Name</span>
+              <span ref={(el) => (inputTitleRefs.current[0] = el)}  className="field-label">Full Name</span>
               <input
+                ref={(el) => (inputRefs.current[0] = el)}
                 type="text"
                 name="name"
                 value={form.name}
@@ -143,8 +181,9 @@ const Contact = () => {
             </label>
 
             <label className="space-y-3">
-              <span className="field-label">Email address</span>
+              <span ref={(el) => (inputTitleRefs.current[1] = el)} className="field-label">Email address</span>
               <input
+                ref={(el) => (inputRefs.current[1] = el)}
                 type="email"
                 name="email"
                 value={form.email}
@@ -156,8 +195,9 @@ const Contact = () => {
             </label>
 
             <label className="space-y-3">
-              <span className="field-label">Your message</span>
+              <span ref={(el) => (inputTitleRefs.current[2] = el)} className="field-label">Your message</span>
               <textarea
+                ref={(el) => (inputRefs.current[2] = el)}
                 name="message"
                 value={form.message}
                 onChange={handleChange}
@@ -168,7 +208,7 @@ const Contact = () => {
               />
             </label>
 
-            <button className="field-btn" type="submit" disabled={loading}>
+            <button ref={buttonRef} className="field-btn" type="submit" disabled={loading}>
               {loading ? 'Sending...' : 'Send Message'}
 
               <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow" />
