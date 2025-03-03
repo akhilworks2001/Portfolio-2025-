@@ -1,10 +1,18 @@
 import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
 
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import useAlert from '../hooks/useAlert.js';
 import Alert from '../components/Alert.jsx';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Contact = () => {
+
+  // Form Handling
   const formRef = useRef();
 
   const { alert, showAlert, hideAlert } = useAlert();
@@ -64,20 +72,65 @@ const Contact = () => {
       );
   };
 
+  // Animation
+
+
+  const titleRef = useRef(null);
+  const subTitleRef = useRef(null);
+  const inputTitleRef = useRef(null);
+  const inputRef = useRef(null);
+  const button = useRef(null);
+
+  useGSAP(() => {
+    if (titleRef.current) {
+        gsap.from(titleRef.current, {
+          opacity: 0,
+          y: -100,
+          duration: 2,
+          ease: "bounce.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 60%",
+          },
+        });
+      }
+
+      if (subTitleRef.current) {
+        gsap.from(subTitleRef.current, {
+          y: -10,
+          duration: 0.6,
+          repeat: 2,
+          ease: "power1.inout",
+          delay: 0.8,
+          scrollTrigger: {
+            trigger: subTitleRef.current,
+            start: "top 80%",
+          },
+        });
+
+        
+
+      }
+
+
+    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
+  }, []);
+
+
   return (
     <section className="c-space my-20" id="contact">
       {alert.show && <Alert {...alert} />}
       <div className="border border-black-300 bg-black-200 rounded-l pt-10 pb-10 flex items-center justify-center flex-col">
         <div className="contact-container bg-gray">
-          <h3 className="head-text">Let's talk</h3>
-          <p className="text-lg text-white-600 mt-3">
+          <h3 ref={titleRef} className="head-text">Let's talk</h3>
+          <p ref={subTitleRef} className="text-lg text-white-600 mt-3">
             Whether you’re looking to build a new website, improve your existing platform, or bring a unique project to
             life, I’m here to help.
           </p>
 
           <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7 mb-12 ">
             <label className="space-y-3">
-              <span className="field-label">Full Name</span>
+              <span  className="field-label">Full Name</span>
               <input
                 type="text"
                 name="name"

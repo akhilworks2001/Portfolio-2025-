@@ -32,13 +32,13 @@ const About = () => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: myAbout.current,
-          start: "top 70%", // Start animation when element enters 70% of viewport
+          start: "top 70%", 
         },
       });
     }
 
     if (techStack.current) {
-      gsap.from(techStack.current, { // ✅ Corrected reference
+      gsap.from(techStack.current, { 
         opacity: 0,
         y: -200,
         duration: 1.5,
@@ -58,7 +58,7 @@ const About = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: globeSec.current,
-            start: "top 70%", // Start animation when element enters 70% of viewport
+            start: "top 70%", 
           },
         });
       }
@@ -71,7 +71,7 @@ const About = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: passionSec.current,
-            start: "top 70%", // Start animation when element enters 70% of viewport
+            start: "top 70%", 
           },
         });
       }
@@ -84,7 +84,7 @@ const About = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: mailSec.current,
-            start: "top 70%", // Start animation when element enters 70% of viewport
+            start: "top 70%", 
           },
         });
       }
