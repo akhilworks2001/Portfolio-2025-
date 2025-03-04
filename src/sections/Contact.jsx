@@ -126,10 +126,10 @@ const Contact = () => {
             gsap.from(el, {
               y: -50,
               opacity: 0,
-              duration: 2,
+              duration: 1.5,
               scrollTrigger: {
                 trigger: el,
-                start: "top 80%",
+                start: "top 70%",
               },
             });
           }
