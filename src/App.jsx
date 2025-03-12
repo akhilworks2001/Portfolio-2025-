@@ -11,10 +11,10 @@ const App = () => {
       <Navbar />
       <Hero />
       <About />
-      {/* <Projects /> */}
+      <Projects />
       <Contact />
     </main>
   )
 }
 
-export default App
+export default App;
