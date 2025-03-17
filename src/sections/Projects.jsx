@@ -1,17 +1,23 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Center, OrbitControls } from '@react-three/drei';
 
 import { myProjects } from '../constants/index.js';
 import CanvasLoader from '../components/Loading.jsx';
 import DemoComputer from '../components/DemoComputer.jsx';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projectCount = myProjects.length;
 
 const Projects = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+
+  const projectDesc = useRef(null);
+  const projectSlides = useRef(null);
 
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
@@ -23,9 +29,41 @@ const Projects = () => {
     });
   };
 
+
+
   useGSAP(() => {
     gsap.fromTo(`.animatedText`, { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.2, ease: 'power2.inOut' });
   }, [selectedProjectIndex]);
+
+  useGSAP(() => {
+    if (projectDesc.current) {
+      gsap.from(projectDesc.current, {
+        opacity: 0,
+        x: -200,
+        duration: 1.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: projectDesc.current,
+          start: "top 70%", 
+        },
+      });
+    }
+
+    if (projectSlides.current) {
+      gsap.from(projectSlides.current, { 
+        opacity: 0,
+        x: 200,
+        duration: 1.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: projectSlides.current,
+          start: "top 70%",
+        },
+      });
+    }
+
+    return () => ScrollTrigger.getAll().forEach((t) => t.kill()); // Cleanup to prevent memory leaks
+  }, []);
 
   const currentProject = myProjects[selectedProjectIndex];
 
@@ -35,7 +73,7 @@ const Projects = () => {
 
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
 
-        <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200">
+        <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200" ref={projectDesc}>
 
         <div className="flex justify-between items-center mt-7">
             <button className="arrow-btn" onClick={() => handleNavigation('previous')}>
@@ -93,7 +131,7 @@ const Projects = () => {
           
         </div>
 
-        <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full">
+        <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full" ref={projectSlides}>
           <Canvas>
             <ambientLight intensity={Math.PI} />
             <directionalLight position={[10, 10, 5]} />
