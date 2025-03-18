@@ -171,7 +171,7 @@ const About = () => {
              {/* tech Section */}
             <div className="xl:col-span-2 xl:row-span-3">
                 <div ref={passionSec} className="grid-container space-y-10">
-                <div  className="grid grid-rows-2 grid-cols-8 sm:grid-rows-2 gap-2 sm:gap-6 xl:gap-10">
+                <div ref={imageGridRef} className="grid grid-rows-2 grid-cols-8 sm:grid-rows-2 gap-2 sm:gap-6 xl:gap-10">
                   {images.map((src, index) => (
                     <div key={index} className="rounded-lg overflow-hidden shadow-lg">
                       <img src={src.src} alt={src.alt} className="w-full h-auto" />
