@@ -212,3 +212,22 @@ export const downloadCV = () => {
   link.download = 'Akhil_latest.pdf';
   link.click();
 };
+
+export const images = [
+  {src: "/assets/html.png", alt: "html"},
+  {src: "/assets/css.png", alt: "css"},
+  {src: "/assets/sass.png", alt: "sass"},
+  {src: "/assets/bootstrap.png", alt: "bootstrap"},
+  {src: "/assets/tailwind.png", alt: "tailwind"},
+  {src: "/assets/javascript.png", alt: "javascript"},
+  {src: "/assets/reactjs.png", alt: "react"},
+  {src: "/assets/firebase.png", alt: "firebase"},
+  {src: "/assets/framer.png", alt: "framer"},
+  {src: "/assets/git.png", alt: "git"},
+  {src: "/assets/next.png", alt: "next"},
+  {src: "/assets/nodejs.png", alt: "nodejs"},
+  {src: "/assets/redux.png", alt: "redux"},
+  {src: "/assets/axios.png", alt: "axios"},
+  {src: "/assets/typescript.png", alt: "typescript"},
+  {src: "/assets/express.png", alt: "express"},
+]

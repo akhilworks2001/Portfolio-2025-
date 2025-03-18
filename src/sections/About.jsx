@@ -4,6 +4,7 @@ import Button from "../components/Button";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {images} from "../constants/index.js"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +22,7 @@ const About = () => {
  const globeSec = useRef(null);
  const passionSec = useRef(null);
  const mailSec = useRef(null);
+ const imageGridRef = useRef(null);
 
 
  useGSAP(() => {
@@ -89,6 +91,20 @@ const About = () => {
         });
       }
 
+      if (imageGridRef.current) {
+        gsap.from(imageGridRef.current.children, {
+          opacity: 0,
+          y: 50,
+          stagger: 0.2, // Each image appears one after another
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: imageGridRef.current,
+            start: "top 70%",
+          },
+        });
+      }
+
     return () => ScrollTrigger.getAll().forEach((t) => t.kill()); // Cleanup to prevent memory leaks
   }, []);
 
@@ -114,14 +130,14 @@ const About = () => {
           </div>
         </div>
 
-        {/* tech Section */}
+        {/* Passion Section */}
         <div className="col-span-1 xl:row-span-3">
                 <div ref={techStack} className="grid-container flex justify-center items-center">
                     <img src="/assets/grid2.png" alt="grid-2" className="w-full sm:w-[260px] h-fit object-contain"/> 
 
                     <div>
-                        <p className="grid-headtext">Tech Stack</p>
-                        <p className="grid-subText">I specalize in JavaScript with a focus on React and Next.js ecosystems.</p>
+                        <p className="grid-headtext">My Passion for Coding</p>
+                        <p className="grid-subtext">I like solving problems and buildings things through code. Coding is't just my profession - it is my passion.</p>
                     </div>
 
                 </div>
@@ -152,14 +168,22 @@ const About = () => {
                 </div>
             </div>
 
-             {/* Passion Section */}
+             {/* tech Section */}
             <div className="xl:col-span-2 xl:row-span-3">
-                <div ref={passionSec} className="grid-container">
-                    <img src="/assets/grid3.png" alt="grid-3" className="w-full sm:h-[276px] h-fit object-contain" />
+                <div ref={passionSec} className="grid-container space-y-10">
+                <div  className="grid grid-rows-2 grid-cols-8 sm:grid-rows-2 gap-2 sm:gap-6 xl:gap-10">
+                  {images.map((src, index) => (
+                    <div key={index} className="rounded-lg overflow-hidden shadow-lg">
+                      <img src={src.src} alt={src.alt} className="w-full h-auto" />
+                    </div>
+                  ))}
+                </div>
                     
+                   
+
                     <div>
-                        <p className="grid-headtext">My Passion for Coding</p>
-                        <p className="grid-subtext">I like solving problems and buildings things through code. Coding is't just my profession - it is my passion.</p>
+                        <p className="grid-headtext">Tech Stack</p>
+                        <p className="grid-subText">I specalize in JavaScript with a focus on React and Next.js ecosystems.</p>
                     </div>
                 </div>
             </div>
