@@ -172,15 +172,16 @@ const About = () => {
             <div className="xl:col-span-2 xl:row-span-3">
                 <div ref={passionSec} className="grid-container space-y-10">
                 <div ref={imageGridRef} className="grid grid-rows-2 grid-cols-8 sm:grid-rows-2 gap-2 sm:gap-6 xl:gap-10">
-                  {images.map((src, index) => (
-                    <div key={index} className="rounded-lg overflow-hidden shadow-lg">
-                      <img src={src.src} alt={src.alt} className="w-full h-auto" />
+                {images.map((src, index) => (
+                  <div key={index} className="relative rounded-lg shadow-lg group">
+                    <img src={src.src} alt={src.alt} className="w-full h-auto" />
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full bg-white text-black px-3 py-1 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all">
+                      {src.alt}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
+              </div>
                     
-                   
-
                     <div>
                         <p className="grid-headtext">Tech Stack</p>
                         <p className="grid-subText">I specalize in JavaScript with a focus on React and Next.js ecosystems.</p>
