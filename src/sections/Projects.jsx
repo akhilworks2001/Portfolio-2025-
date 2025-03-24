@@ -108,6 +108,8 @@ const Projects = () => {
                   <img src={tag.path} alt={tag.name} />
                 </div>
               ))}
+            </div>
+            <div className="flex justify-between gap-5">
             <a
               className="flex items-center gap-2 cursor-pointer text-white-600"
               href={currentProject.href}
@@ -126,6 +128,7 @@ const Projects = () => {
               <img src="/assets/arrow-up.png" alt="arrow" className="w-3 h-3" />
             </a>
             </div>
+            
           </div>
 
           
