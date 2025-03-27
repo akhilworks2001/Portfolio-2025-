@@ -202,7 +202,7 @@ export const workExperiences = [
   },
   {
     id: 3,
-    name: 'Notion',
+    name: '',
     pos: '',
     duration: '',
     title: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore voluptatem sapiente et inventore laboriosam harum itaque cumque tempore beatae quasi ab modi nemo fugiat commodi, quos illo odit totam repudiandae!",
