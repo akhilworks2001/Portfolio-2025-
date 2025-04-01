@@ -11,16 +11,21 @@ export const navLinks = [
   },
   {
     id: 3,
+    name: 'Experience',
+    href: '#experience',
+  },
+  {
+    id: 4,
     name: 'Work',
     href: '#work',
   },
   {
-    id: 4,
+    id: 5,
     name: 'Contact',
     href: '#contact',
   },
   {
-    id: 5,
+    id: 6,
     name: 'Linkdin',
     href: '#linkdin',
   },
@@ -184,36 +189,36 @@ export const calculateSizes = (isSmall, isMobile, isTablet, isLaptop) => {
 export const workExperiences = [
   {
     id: 1,
-    name: '',
+    name: 'Confidential Project',
     pos: '',
     duration: '',
-    title: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore voluptatem sapiente et inventore laboriosam harumitaque cumque tempore beatae quasi ab modi nemo fugiat commodi, quos illo odit totam repudiandae!",
-    icon: '',
+    title: "Developed a database and monitoring system for the Indian Government.",
+    icon: '/assets/victory.png',
     animation: 'victory',
   },
   {
     id: 2,
-    name: '',
+    name: 'Metropolitan Antiques Art Website About',
     pos: '',
     duration: '',
-    title: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore voluptatem sapiente et inventore laboriosam harum itaque cumque tempore beatae quasi ab modi nemo fugiat commodi, quos illo odit totam repudiandae!",
-    icon: '',
+    title: "This Website is an e-commerce website. On this website, buyers can buy Fine Arts and Antiques",
+    icon: '/assets/clapping.png',
     animation: 'clapping',
   },
   {
     id: 3,
-    name: '',
+    name: 'Puzzle Nite Website',
     pos: '',
     duration: '',
-    title: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore voluptatem sapiente et inventore laboriosam harum itaque cumque tempore beatae quasi ab modi nemo fugiat commodi, quos illo odit totam repudiandae!",
-    icon: '',
+    title: " This website provides information regarding the Puzzle Nite game application, Login functionality, Reviews for the application, and newsletters",
+    icon: '/assets/salute.png',
     animation: 'salute',
   },
 ];
 
 export const downloadCV = () => {
   const link = document.createElement('a');
-  link.href = '/Akhil_latest.pdf'; 
+  link.href = '/assets/Akhil_latest.pdf'; 
   link.download = 'Akhil_latest.pdf';
   link.click();
 };

@@ -184,7 +184,7 @@ const About = () => {
                     
                     <div>
                         <p className="grid-headtext">Tech Stack</p>
-                        <p className="grid-subText">I specalize in JavaScript with a focus on React and Next.js ecosystems.</p>
+                        <p className="grid-subtext">I specialize in JavaScript with a focus on React, building dynamic and efficient user interfaces. My tech stack includes HTML, CSS, SCSS, Bootstrap, Tailwind, Next.js, MongoDB, and Express for creating responsive and scalable web applications.</p>
                     </div>
                 </div>
             </div>

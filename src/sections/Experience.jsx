@@ -1,13 +1,17 @@
 import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber'
-import React, { Suspense } from 'react'
+import React, { Suspense, useState } from 'react'
 import CanvasLoader from '../components/CanvasLoader';
 import Developer from '../components/Developer';
 import { workExperiences } from '../constants/index.js';
 
+
 const Experience = () => {
+
+  const [ animationName, setAnimationName ] = useState('idle');
+
   return (
-    <section className="c-space my-20" id="work">
+    <section className="c-space my-20" id="experience">
       <div className="w-full text-white-600">
         <p className="head-text">My Work Experience</p>
 
@@ -19,13 +23,15 @@ const Experience = () => {
               < directionalLight position={[10, 10, 10]} />
               <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
               <Suspense fallback={<CanvasLoader />}>
-                <Developer position-y={-3} scale={3}/>
+                <Developer position-y={-3} scale={2.8} animationName={animationName} />
               </Suspense>
             </Canvas>
           </div>
 
           <div className="work-content">
             <div className="sm:py-10 py-5 sm:px-5 px-2.5">
+            <p className="py-2 font-bold">Exatain Solutions </p>
+            <p className="py-5">Front end Developer -- 2023 - Present</p>
             {workExperiences.map((item, index) => (
                 <div
                   key={index}
@@ -42,10 +48,7 @@ const Experience = () => {
                   </div>
 
                   <div className="sm:p-5 px-2.5 py-5">
-                    <p className="font-bold text-white-800">{item.name}</p>
-                    <p className="text-sm mb-5">
-                      {item.pos} -- <span>{item.duration}</span>
-                    </p>
+                    <p className="font-bold text-white-800 py-2">{item.name}</p>
                     <p className="group-hover:text-white transition-all ease-in-out duration-500">{item.title}</p>
                   </div>
                 </div>
