@@ -123,8 +123,7 @@ const About = () => {
             <div>
               <p className="grid-headtext">Hi, I'm Akhil</p>
               <p className="grid-subtext">
-                With 1.5 years of experience, I have honed my skills in frontend
-                and backend development, with animated 3D websites.
+                an experienced developer with expertise in frontend and backend development, including building animated 3D websites.
               </p>
             </div>
           </div>
